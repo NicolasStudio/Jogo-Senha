@@ -31,7 +31,7 @@ function validar() {
                             if (senha.length >= 5 && /[A-Z]/.test(senha) && /[a-z]/.test(senha) && /[!@#$%^&*(),.?":{}|<>]/.test(senha) && contemMes) {
                                 mensagem.textContent = "A senha precisa conter a soma de 17 + 13 em algarismos romanos!";
                                 mensagem.style.display = "block";
-                                if (senha.length >= 5 && /[A-Z]/.test(senha) && /[a-z]/.test(senha) && /[!@#$%^&*(),.?":{}|<>]/.test(senha) && contemMes && /XX/.test(senha)) {
+                                if (senha.length >= 5 && /[A-Z]/.test(senha) && /[a-z]/.test(senha) && /[!@#$%^&*(),.?":{}|<>]/.test(senha) && contemMes && /XXX/.test(senha)) {
                                     mensagem.textContent = "A senha precisa conter um ano bissexto entre 1900 e 2024!";
                                     mensagem.style.display = "block";
 
@@ -43,18 +43,18 @@ function validar() {
                                     }  
                                     const contemAnoBissexto = anosBissextos.some(ano => senha.includes(ano));
 
-                                    if (senha.length >= 5 && /[A-Z]/.test(senha) && /[a-z]/.test(senha) && /[!@#$%^&*(),.?":{}|<>]/.test(senha) && contemMes && /XX/.test(senha) && contemAnoBissexto) {
+                                    if (senha.length >= 5 && /[A-Z]/.test(senha) && /[a-z]/.test(senha) && /[!@#$%^&*(),.?":{}|<>]/.test(senha) && contemMes && /XXX/.test(senha) && contemAnoBissexto) {
                                         mensagem.textContent = "A senha precisa conter um elemento da tabela periódica!";
                                         mensagem.style.display = "block";
 
                                         const elementos = ["H", "He", "Li", "Be", "B", "C", "N", "O", "F", "Ne", "Na", "Mg", "Al", "Si", "P", "S", "Cl", "Ar", "K", "Ca", "Sc", "Ti", "V", "Cr", "Mn", "Fe", "Co", "Ni", "Cu", "Zn", "Ga", "Ge", "As", "Se", "Br", "Kr", "Rb", "Sr", "Y", "Zr", "Nb", "Mo", "Tc", "Ru", "Rh", "Pd", "Ag", "Cd", "In", "Sn", "Sb", "Te", "I", "Xe", "Cs", "Ba", "La", "Ce", "Pr", "Nd", "Pm", "Sm", "Eu", "Gd", "Tb", "Dy", "Ho", "Er", "Tm", "Yb", "Lu", "Hf", "Ta", "W", "Re", "Os", "Ir", "Pt", "Au", "Hg", "Tl", "Pb", "Bi", "Po", "At", "Rn", "Fr", "Ra", "Ac", "Th", "Pa", "U", "Np", "Pu", "Am", "Cm", "Bk", "Cf", "Es", "Fm", "Md", "No", "Lr", "Rf", "Db", "Sg", "Bh", "Hs", "Mt", "Ds", "Rg", "Cn", "Nh", "Fl", "Mc", "Lv", "Ts", "Og"];
                                         const contemElemento = elementos.some(elemento => senha.includes(elemento));
-                                        if (senha.length >= 5 && /[A-Z]/.test(senha) && /[a-z]/.test(senha) && /[!@#$%^&*(),.?":{}|<>]/.test(senha) && contemMes && /XX/.test(senha) && contemAnoBissexto && contemElemento) {
+                                        if (senha.length >= 5 && /[A-Z]/.test(senha) && /[a-z]/.test(senha) && /[!@#$%^&*(),.?":{}|<>]/.test(senha) && contemMes && /XXX/.test(senha) && contemAnoBissexto && contemElemento) {
                                             mensagem.textContent = "A senha precisa conter uma cor em hexadecimal!";
                                             mensagem.style.display = "block";
 
                                             const regexHex = /#([0-9A-Fa-f]{6}|[0-9A-Fa-f]{3})/;
-                                            if (senha.length >= 5 && /[A-Z]/.test(senha) && /[a-z]/.test(senha) && /[!@#$%^&*(),.?":{}|<>]/.test(senha) && contemMes && /XX/.test(senha) && contemAnoBissexto && contemElemento && regexHex.test(senha)) {
+                                            if (senha.length >= 5 && /[A-Z]/.test(senha) && /[a-z]/.test(senha) && /[!@#$%^&*(),.?":{}|<>]/.test(senha) && contemMes && /XXX/.test(senha) && contemAnoBissexto && contemElemento && regexHex.test(senha)) {
                                                 mensagem.textContent = "A senha precisa conter um número primo entre 1 e 100!";
                                                 mensagem.style.display = "block";
 
@@ -78,7 +78,7 @@ function validar() {
                                                 const contemPrimo = primosEncontrados.length > 0;
                                                 const temMaisDeUmPrimo = primosEncontrados.length > 1;
 
-                                                if (senha.length >= 5 && /[A-Z]/.test(senha) && /[a-z]/.test(senha) && /[!@#$%^&*(),.?":{}|<>]/.test(senha) && contemMes && /XX/.test(senha) && contemAnoBissexto && contemElemento && regexHex.test(senha) && contemPrimo) {
+                                                if (senha.length >= 5 && /[A-Z]/.test(senha) && /[a-z]/.test(senha) && /[!@#$%^&*(),.?":{}|<>]/.test(senha) && contemMes && /XXX/.test(senha) && contemAnoBissexto && contemElemento && regexHex.test(senha) && contemPrimo) {
                                                     
                                                     if (temMaisDeUmPrimo) {
                                                         mensagem.textContent = "Sua senha tem mais de um número primo!";
