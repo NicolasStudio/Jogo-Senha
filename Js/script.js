@@ -89,7 +89,7 @@ function validar() {
         },
         {
             condicao: () => !senha.includes("França"),
-            mensagem: "Sua senha não tem o nome de um time que ganhou a copa do mundo em 1988!"
+            mensagem: "Sua senha não tem o nome de um time que ganhou a copa do mundo em 1998!"
         },
         {
             condicao: () => {
