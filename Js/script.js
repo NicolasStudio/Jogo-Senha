@@ -33,8 +33,8 @@ function validar() {
             mensagem: "A senha precisa conter o nome de um mês!"
         },
         {
-            condicao: () => !/XX/.test(senha),
-            mensagem: "A senha precisa conter a soma de 17 + 13 em algarismos romanos!"
+            condicao: () => !/XXX/.test(senha),
+            mensagem: "A senha precisa conter a soma de 17 + 13 em algarismos romanos!",
         },
         {
             condicao: () => {
@@ -116,20 +116,62 @@ function validar() {
                 return !alimentosPalindromos.some(alimento => senhaMinuscula.includes(alimento));
             },
             mensagem: "Sua senha não tem o nome de um alimento Palíndromo!"
-        }
+        },
+        {
+            condicao: () => !senhaMinuscula.includes("charizard"),
+            mensagem: "Sua senha não tem o nome do Pokémon número 6 da Pokédex!"
+        },
+        {
+            condicao: () => (senha.split("@").length - 1) < 2,
+            mensagem: 'Sua senha precisa conter 2 caracteres "@"!'
+        },
+        {
+            condicao: () => {
+                const input = document.getElementById('input');
+                const corInput = input.style.color;
+                return !document.querySelector(".esqueciSenha").classList.contains("hidden") && 
+                    (corInput === "rgb(255, 255, 255)" || corInput === "#ffffff" || corInput === "");
+            },
+            mensagem: "Não faça nada!",
+            acao: () => aparecerLembrarSenha(),
+        },
+        {
+            // Senha precisa ter ao todo menos que 30 vogais
+            condicao: () => {
+                const vogais = senha.match(/[aeiouAEIOU]/g);
+                return vogais ? vogais.length > 30 : false;
+            },
+            mensagem: "Sua senha tem mais de 30 vogais!"
+        },
     ];
 
     // Verificar cada regra
     for (let regra of regras) {
         if (regra.condicao()) {
-            mensagem.textContent = regra.mensagem;
+            // Se for a regra do aparecerLembrarSenha, não mostra mensagem de erro
+            if (regra.acao === aparecerLembrarSenha) {
+                regra.acao(); // Aplica os estilos
+                continue; // ← CONTINUA para a próxima regra, não para aqui
+            }
+            
+            // Para todas as outras regras, mostra erro e para
+            mensagem.innerHTML = `
+                <img src="img/erro.svg" 
+                    alt="Erro" 
+                    style="width:20px; vertical-align:middle; margin-right:5px; margin-bottom:3px;">
+                ${regra.mensagem}
+            `;
             mensagem.style.display = "block";
-            mensagem.style.color = "#ff4444";
-            return; // Para a execução aqui
+            mensagem.style.color = "#FF4146";
+            
+            if (regra.acao) {
+                regra.acao();
+            }
+            
+            return; // ← Para a execução para outras regras
         }
-    }
+    }   
 
-    // Se passou por todas as regras - SENHA VÁLIDA!
     mensagem.textContent = "Senha perfeita! Você completou todos os requisitos!";
     mensagem.style.color = "lightgreen";
     mensagem.style.display = "block";
@@ -142,4 +184,36 @@ function validar() {
             parabens.style.display = "block";
         }
     }, 1500);
+}
+
+function aparecerLembrarSenha(){
+    const input = document.getElementById('input');
+    const mensagem = document.querySelector(".boxSenha p");
+    document.querySelector(".esqueciSenha").style.display = "block";
+    input.style.color = "transparent"; // ← Só aqui fica transparente
+    mensagem.style.color = "transparent"; // ← Só aqui fica transparente
+}
+
+function esconderLembrarSenha(){
+    const input = document.getElementById('input');
+    document.querySelector(".esqueciSenha").style.display = "none";
+    mensagem.style.color = "#FF4146"; 
+    input.style.color = ""; // ← Volta para cor padrão do CSS
+}
+
+function esqueciSenha() {
+    const input = document.getElementById('input');
+    const mensagem = document.querySelector(".boxSenha p");
+
+    input.value = '';
+    document.querySelector(".esqueciSenha").style.display = "none";
+    mensagem.style.color = "#FF4146"; 
+    mensagem.textContent = "Se você não sabe a SUA senha, eu não vou saber!!!";
+    
+    setTimeout(() => {
+        mensagem.style.display = "none";
+    }, 3000);
+
+
+    input.style.color = ""; // ← Volta para cor padrão do CSS
 }

@@ -64,7 +64,6 @@ header::after {
 .boxSenha {
     display: flex;
     flex-direction: column;
-    gap: 20px;
 }
 
 .inputBox {
@@ -76,7 +75,7 @@ header::after {
     width: 100%;
     padding: 15px;
     font-size: 1.2rem;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.102);
     border: 2px solid #00ffff;
     border-radius: 8px;
     color: white;
@@ -102,12 +101,23 @@ header::after {
 
 #input:focus + span,
 #input:not(:placeholder-shown) + span {
-    top: -10px;
-    left: 10px;
+    top: -15px;
+    left: 5px;
     font-size: 0.9rem;
     color: #00ffff;
     background: #fdfeff00;
-    padding: 0 5px;
+}
+
+.esqueciSenha{
+    text-decoration: none;
+    color: #FF4146;
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+    display: none;
+}
+
+.esqueciSenha:hover{
+    color: #fd7f84;
 }
 
 #btn {
@@ -116,7 +126,7 @@ header::after {
     background: linear-gradient(45deg, #00ffff, #0080ff);
     border: none;
     border-radius: 8px;
-    color: #16213e;
+    color: #fff;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s;
@@ -150,9 +160,10 @@ header::after {
 }
 
 .boxSenha p{
-    font-size: 1rem;
-    color: #fc0000;
+    font-size: 1.1rem;
+    color: #FF4146;
     display: none;
+    margin-bottom: 10px;
 }
 
 .boxSenha p .alert{
